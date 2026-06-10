@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julie Blankets & Bedcovers Uganda</title>
+<link rel="stylesheet" href="style.css">
+<!-- Swiper CSS for top-selling slider -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+</head>
+<body>
+
+<header>
+  <div class="header-top">Julie Blankets & Bedcovers Uganda</div>
+  <div class="header-bottom">
+    <div class="header-center">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <button onclick="searchProducts()">Search</button>
+      </div>
+    </div>
+    <div class="cart" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
+  </div>
+</header>
+
+<!-- Top Selling Products Slider -->
+<section class="top-selling">
+  <h2>Top Selling Products</h2>
+  <div class="swiper top-selling-swiper">
+    <div class="swiper-wrapper" id="top-selling-wrapper"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- Categories Dropdown -->
+<div class="floating-dropdown">
+  <button id="categoryBtn">Categories ▾</button>
+  <div id="dropdownContent" class="dropdown-content">
+    <a href="javascript:void(0)" onclick="filterCategory('blankets')">Blankets</a>
+    <a href="javascript:void(0)" onclick="filterCategory('bedcovers')">Bedcovers</a>
+    <a href="javascript:void(0)" onclick="filterCategory('bedsheets')">Bedsheets</a>
+    <a href="javascript:void(0)" onclick="filterCategory('curtains')">Curtains</a>
+    <a href="javascript:void(0)" onclick="filterCategory('pillows')">Pillows</a>
+    <a href="javascript:void(0)" onclick="renderProducts()">All</a>
+  </div>
+</div>
+
+<section class="products">
+  <h2>Hot Deals UG</h2>
+  <div id="product-grid" class="product-grid"></div>
+</section>
+
+<!-- Cart Modal -->
+<div id="cartModal">
+  <div id="cartContent">
+    <span class="close-btn" onclick="closeCart()">&times;</span>
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div class="cart-total">Total: UGX <span id="cart-total">0</span></div>
+    <div style="text-align:center; margin-top:10px;">
+      <button onclick="goToCheckout()">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/256793880471" target="_blank" id="whatsappBtn">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

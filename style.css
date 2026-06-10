@@ -1,0 +1,246 @@
+/* ================= Global Styles ================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f7fa;
+  color: #333;
+}
+
+a { text-decoration: none; color: inherit; }
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* ================= Header ================= */
+header {
+  width: 100%;
+}
+
+.header-top {
+  background: #16a085;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.8rem 0;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  background: #eee;
+}
+
+.header-center {
+  flex: 1;
+}
+
+.search-bar input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+.search-bar button {
+  padding: 0.4rem 0.8rem;
+  background: #16a085;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.cart {
+  background: #16a085;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+/* ================= Hero ================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero .overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 2rem;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+
+/* ================= Dropdown ================= */
+.floating-dropdown {
+  position: relative;
+  margin: 1rem;
+}
+
+.floating-dropdown button {
+  padding: 0.5rem 1rem;
+  background: #16a085;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: white;
+  min-width: 160px;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.5rem;
+  color: #333;
+}
+
+.dropdown-content a:hover { background: #eee; }
+
+/* ================= Product Grid ================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.product-card {
+  background: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.product-card h3 { margin: 0.5rem 0; font-size: 1rem; }
+.product-card p { font-weight: bold; color: #16a085; }
+.product-card button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background: #16a085;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.product-card button:hover { background: #138f75; }
+
+/* ================= Cart Modal ================= */
+#cartModal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#cartContent {
+  background: white;
+  margin: 5% auto;
+  padding: 1rem;
+  width: 400px;
+  border-radius: 6px;
+  position: relative;
+}
+
+#cartContent .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cart-item { display: flex; justify-content: space-between; padding: 0.3rem 0; }
+.cart-total { font-weight: bold; text-align: right; margin-top: 0.5rem; }
+
+/* ================= Top Selling Slider ================= */
+.top-selling { padding: 1rem; }
+.top-selling h2 { text-align: center; margin-bottom: 1rem; }
+
+.top-selling .swiper-slide {
+  background:white;
+  border-radius:6px;
+  padding:0.5rem;
+  text-align:center;
+}
+
+.top-selling .swiper-slide img {
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:6px;
+}
+
+.top-selling .swiper-slide h3 { font-size:1rem; margin:0.5rem 0; }
+.top-selling .swiper-slide p { font-weight:bold; color:#16a085; }
+.top-selling .swiper-slide button {
+  margin-top:0.5rem;
+  padding:0.4rem 0.6rem;
+  background:#16a085;
+  color:white;
+  border:none;
+  border-radius:4px;
+}
+
+.top-selling .swiper-slide button:hover { background:#138f75; }
+
+/* ================= Admin Panel ================= */
+.admin-dropdown {
+  padding: 1rem;
+  background: #f0f0f0;
+  border-top: 1px solid #ccc;
+}
+
+.admin-dropdown input, .admin-dropdown button {
+  margin: 0.3rem 0;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.add-product-form input, .add-product-form button { display:block; width: 100%; margin: 0.3rem 0; }
+
+/* ================= WhatsApp Button ================= */
+#whatsappBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width:50px;
+  height:50px;
+  z-index: 3000;
+}
+
+#whatsappBtn img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }

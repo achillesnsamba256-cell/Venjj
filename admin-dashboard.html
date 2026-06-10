@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Julie Blankets & Bedcovers Uganda</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Dashboard table */
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th, td { padding: 0.75rem; border: 1px solid #ddd; text-align: left; }
+th { background-color: #16a085; color: white; }
+.status-select { padding: 0.25rem 0.5rem; border-radius: 4px; border: 1px solid #ccc; }
+
+/* Color-coded status */
+.status-pending { background-color: #f9f1a5; color: #555; font-weight: bold; text-align: center; }
+.status-completed { background-color: #a5f9b0; color: #333; font-weight: bold; text-align: center; }
+
+/* Logout button */
+#logoutBtn { margin: 1rem 0; padding: 0.5rem 1rem; background:#16a085; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+#logoutBtn:hover { background:#128066; }
+
+/* Responsive */
+@media screen and (max-width:768px){
+  table, thead, tbody, th, td, tr { display:block; width:100%; }
+  tr { margin-bottom:1rem; }
+  th { display:none; }
+  td { display:flex; justify-content:space-between; padding:0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    Admin Dashboard - Julie Blankets & Bedcovers Uganda
+  </div>
+</header>
+
+<div class="dashboard-container" style="padding:1rem; max-width:1200px; margin:auto;">
+
+  <button id="logoutBtn" onclick="logoutAdmin()">Logout</button>
+
+  <h2>Orders</h2>
+  <table id="ordersTable">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Items</th>
+        <th>Total (UGX)</th>
+        <th>Status</th>
+        <th>Update Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+</div>
+
+<script>
+// Admin session check
+if(sessionStorage.getItem("isAdminLoggedIn") !== "true"){
+  alert("Please log in as admin.");
+  window.location.href = "index.html";
+}
+
+// Sample orders stored in localStorage (replace with your order logic)
+let orders = JSON.parse(localStorage.getItem("orders")) || [
+  {id:1, customer:"John Doe", items:["Blanket","Pillow"], total:130000, status:"Pending"},
+  {id:2, customer:"Jane Smith", items:["Bedcover"], total:92000, status:"Completed"}
+];
+
+// Render orders table
+function renderOrders(){
+  const tbody = document.querySelector("#ordersTable tbody");
+  tbody.innerHTML = "";
+  orders.forEach((order,index)=>{
+    const tr = document.createElement("tr");
+
+    const itemsStr = order.items.join(", ");
+    tr.innerHTML = `
+      <td>${order.id}</td>
+      <td>${order.customer}</td>
+      <td>${itemsStr}</td>
+      <td>UGX ${order.total.toLocaleString()}</td>
+      <td class="${order.status==='Pending'?'status-pending':'status-completed'}">${order.status}</td>
+      <td>
+        <select class="status-select" onchange="updateOrderStatus(${index}, this.value)">
+          <option value="Pending" ${order.status==='Pending'?'selected':''}>Pending</option>
+          <option value="Completed" ${order.status==='Completed'?'selected':''}>Completed</option>
+        </select>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Update order status
+function updateOrderStatus(index, newStatus){
+  orders[index].status = newStatus;
+  localStorage.setItem("orders", JSON.stringify(orders));
+  renderOrders();
+}
+
+// Logout
+function logoutAdmin(){
+  sessionStorage.removeItem("isAdminLoggedIn");
+  window.location.href = "index.html";
+}
+
+// Initial render
+renderOrders();
+</script>
+
+</body>
+</html>
